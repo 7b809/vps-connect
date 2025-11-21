@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SSH Web Console (Flask)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+      input, textarea { width: 100%; padding: 8px; margin: 6px 0 12px 0; box-sizing: border-box; }
+      label { font-weight: bold; }
+      .btn { padding: 10px 16px; background: #0b63d6; color: white; border: none; cursor: pointer; border-radius: 6px; }
+      .note { background: #fff3cd; padding: 10px; border-radius: 6px; margin-bottom: 14px; }
+    </style>
+  </head>
+  <body>
+    <h1>SSH Web Console</h1>
+    <div class="note">
+      <strong>Security notice:</strong> This demo will SSH to the target host using supplied credentials and run a command.
+      Do <em>not</em> deploy this without adding authentication, HTTPS, and rate-limiting. Prefer SSH keys over passwords.
+    </div>
+
+    <form method="post">
+      <label for="server_ip">Server IP</label>
+      <input id="server_ip" name="server_ip" placeholder="e.g. 160.250.204.7" required />
+
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="root" required />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="server password (or leave blank for key-based auth)" />
+
+      <label for="command">Command</label>
+      <input id="command" name="command" placeholder="e.g. whoami or uptime" required />
+
+      <button class="btn" type="submit">Run command</button>
+    </form>
+
+    <p style="margin-top:18px; font-size:0.9em; color:#555;">
+      For safer usage, run locally or use SSH keys and server-side vaults to store credentials.
+    </p>
+  </body>
+</html>

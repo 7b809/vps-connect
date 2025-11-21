@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Command Output</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; padding: 20px; max-width: 900px; margin: auto; }
+      pre { background:#f6f8fa; padding:12px; border-radius:6px; overflow:auto; }
+      .error { color: #8a1f11; background:#fdecea; padding:10px; border-radius:6px; }
+      a.btn { display:inline-block; margin-top:12px; text-decoration:none; padding:8px 12px; background:#0b63d6; color:white; border-radius:6px; }
+    </style>
+  </head>
+  <body>
+    <h1>Command Output</h1>
+
+    {% if error %}
+      <div class="error"><strong>Error:</strong>
+        <pre>{{ error }}</pre>
+      </div>
+    {% endif %}
+
+    {% if output %}
+      <h3>Stdout</h3>
+      <pre>{{ output }}</pre>
+    {% elif not error %}
+      <div>No output returned.</div>
+    {% endif %}
+
+    <p><a class="btn" href="/">Run another command</a></p>
+  </body>
+</html>
